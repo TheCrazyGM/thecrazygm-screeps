@@ -59,7 +59,7 @@ module.exports.loop = function () {
     }
 
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-    console.log('upgraders: ' + upgraders.length);
+    console.log('Upgraders: ' + upgraders.length);
 
     if (upgraders.length < 2) {
         var newName = 'Upgraders' + Game.time;
