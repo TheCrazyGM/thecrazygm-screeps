@@ -8,8 +8,11 @@ Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "harvester", {memory: {role:
 Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "lory", {memory: {role: 'lory'}});
 Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "claimer", {memory: {role: 'claimer'}});
 Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "repairer", {memory: {role: 'repairer'}});
+Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "upgrader", {memory: {role: 'upgrader'}});
 Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "builder", {memory: {role: 'builder'}});
 Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "wallRepairer", {memory: {role: 'wallRepairer'}});
+
+Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], "builder2", {memory: {role: 'builder', working: false}});
 
 
 
