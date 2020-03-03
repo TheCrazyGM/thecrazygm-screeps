@@ -3,6 +3,13 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder')
 
 module.exports.loop = function () {
+    for (var name in Memory.creeps) {
+        if (!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
+        }
+    }
+
     for (var name in Game.rooms) {
         percent = (Game.rooms[name].controller.progress / Game.rooms[name].controller.progressTotal) * 100;
         Game.rooms[name].visual.text(
@@ -15,29 +22,7 @@ module.exports.loop = function () {
         });
         console.log(Game.rooms[name].controller.progress, Game.rooms[name].controller.progressTotal, percent);
     }
-
-    for (var name in Memory.creeps) {
-        if (!Game.creeps[name]) {
-            delete Memory.creeps[name];
-            console.log('Clearing non-existing creep memory:', name);
-        }
-    }
-
-    var tower = Game.getObjectById('TOWER_ID');
-    if (tower) {
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
-        if (closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
-
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if (closestHostile) {
-            tower.attack(closestHostile);
-        }
-    }
-
+    
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     console.log('Harvesters: ' + harvesters.length);
 
@@ -54,7 +39,7 @@ module.exports.loop = function () {
     if (builders.length < 2) {
         var newName = 'Builder' + Game.time;
         console.log('Spawning new builder: ' + newName);
-        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, MOVE], newName,
+        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE], newName,
             { memory: { role: 'builder' } });
     }
 
@@ -64,7 +49,7 @@ module.exports.loop = function () {
     if (upgraders.length < 2) {
         var newName = 'Upgraders' + Game.time;
         console.log('Spawning new upgraders: ' + newName);
-        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, MOVE], newName,
+        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE], newName,
             { memory: { role: 'upgrader' } });
     }
 
