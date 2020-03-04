@@ -1,32 +1,29 @@
-module.exports = {
-    // a function to run the logic for this role
-    /** @param {Creep} creep */
-    run: function(creep) {
-        // if creep is bringing energy to the controller but has no energy left
-        if (creep.memory.working == true && creep.carry.energy == 0) {
-            // switch state
-            creep.memory.working = false;
+var roleUpgrader = {
+
+    /** @param {Creep} creep **/
+    run: function (creep) {
+
+        if (creep.memory.upgrading && creep.store[RESOURCE_ENERGY] == 0) {
+            creep.memory.upgrading = false;
+            creep.say('🔄 harvest');
         }
-        // if creep is harvesting energy but is full
-        else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
-            // switch state
-            creep.memory.working = true;
+        if (!creep.memory.upgrading && creep.store.getFreeCapacity() == 0) {
+            creep.memory.upgrading = true;
+            creep.say('⚡ upgrade');
         }
 
-        // if creep is supposed to transfer energy to the controller
-        if (creep.memory.working == true) {
-            // instead of upgraderController we could also use:
-            // if (creep.transfer(creep.room.controller, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-
-            // try to upgrade the controller
+        if (creep.memory.upgrading) {
             if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                // if not in range, move towards the controller
-                creep.moveTo(creep.room.controller);
+                creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
             }
         }
-        // if creep is supposed to get energy
         else {
-            creep.getEnergy(true, true);
+            var sources = creep.room.find(FIND_SOURCES);
+            if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[1], { visualizePathStyle: { stroke: '#ffaa00' } });
+            }
         }
     }
 };
+
+module.exports = roleUpgrader;
