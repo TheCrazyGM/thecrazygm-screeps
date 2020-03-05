@@ -76,9 +76,9 @@ module.exports.loop = function () {
                 Game.spawns['Spawn1'].pos.x + 1, Game.spawns['Spawn1'].pos.y,
                 { align: 'left', opacity: 0.8 });
         }
-    // for each spawn
-    for (let spawnName in Game.spawns) {
-        // run spawn logic
-        Game.spawns[spawnName].spawnCreepsIfNecessary();
+    // for each creeps
+    for (let name in Game.creeps) {
+        // run creep logic
+        Game.creeps[name].runRole();
     }
 }
