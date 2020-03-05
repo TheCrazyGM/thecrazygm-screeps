@@ -81,4 +81,9 @@ module.exports.loop = function () {
         // run creep logic
         Game.creeps[name].runRole();
     }
+    // for each spawn
+    for (let spawnName in Game.spawns) {
+        // run spawn logic
+        Game.spawns[spawnName].spawnCreepsIfNecessary();
+    }
 }

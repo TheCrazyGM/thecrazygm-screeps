@@ -6,7 +6,7 @@
  * var mod = require('spawn');
  * mod.thing == 'a thing'; // true
  */
-var spawner = {
+module.exports = {
     transporter: function () {
         var newName = 'Transport' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE], newName, { memory: { role: 'harvester' } })
@@ -32,4 +32,3 @@ var spawner = {
         Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, { memory: { role: 'builder' } })
     },
 };
-module.exports.spawner = spawner;
