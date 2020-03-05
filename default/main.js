@@ -69,24 +69,10 @@ module.exports.loop = function () {
                 Game.spawns['Spawn1'].pos.x + 1, Game.spawns['Spawn1'].pos.y,
                 { align: 'left', opacity: 0.8 });
         }
-
-    for (var name in Game.creeps) {
-        var creep = Game.creeps[name];
-        if (creep.memory.role == 'harvester') {
-            /*   if (Game.rooms[0].energyAvailable == Game.rooms[name].energyCapacityAvailable) {
-                 creep.Memory.role = "builder"
-              else{
-                 creep.Memory.role = "harvester"}
-            }
-            roleHarvester.run(creep);
-        }
-        if (creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        }
-        if (creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
-        }
-
-    }
 */
+    // for each creeps
+    for (let name in Game.creeps) {
+        // run creep logic
+        Game.creeps[name].runRole();
+    }
 }
