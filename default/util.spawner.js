@@ -32,4 +32,4 @@ var spawner = {
         Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName, { memory: { role: 'builder' } })
     },
 };
-modules.export = spawner;
+module.exports.spawner = spawner;
