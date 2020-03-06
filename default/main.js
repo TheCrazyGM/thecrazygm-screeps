@@ -20,7 +20,7 @@ module.exports.loop = function () {
             align: 'left',
             opacity: 0.8
         });
-        console.log(Game.rooms[name].controller.progress, Game.rooms[name].controller.progressTotal, percent);
+        //console.log(Game.rooms[name].controller.progress, Game.rooms[name].controller.progressTotal, percent);
     }
     // find all towers
     var towers = _.filter(Game.structures, s => s.structureType == STRUCTURE_TOWER);
