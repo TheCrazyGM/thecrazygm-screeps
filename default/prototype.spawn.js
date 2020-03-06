@@ -57,6 +57,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
             }
         }
+
         // if none of the above caused a spawn command check for other roles
         if (name == undefined) {
             for (let role of listOfRoles) {
@@ -71,7 +72,8 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                     }
                 }
                 // if no claim order was found, check other roles
-                else if (numberOfCreeps[role] < this.memory.minCreeps[role]) {
+                else if (this.memory.hasOwnProperty(this.memory.minCreeps) && this.memory.hasOwnProperty(this.memory.minCreeps[role])
+                    && numberOfCreeps[role] < this.memory.minCreeps[role]) {
                     if (role == 'lorry') {
                         name = this.createLorry(150);
                     }
@@ -180,11 +182,6 @@ StructureSpawn.prototype.createMiner =
             { memory: { role: 'miner', sourceId: sourceId } });
     };
 
-StructureSpawn.prototype.createTruck =
-    function () {
-        return this.spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], 'truck_' + Game.time,
-            { memory: { role: 'upgrader', working: false } })
-    }
 // create a new function for StructureSpawn
 StructureSpawn.prototype.createLorry =
     function (energy) {
