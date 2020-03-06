@@ -8,4 +8,9 @@ StructureTower.prototype.defend =
             // ...FIRE!
             this.attack(target);
         }
+        else {
+            if (closestDamagedStructure) {
+                tower.repair(closestDamagedStructure);
+            }
+        }
     };
