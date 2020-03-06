@@ -10,7 +10,6 @@ module.exports.loop = function () {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-
     for (var name in Game.rooms) {
         percent = (Game.rooms[name].controller.progress / Game.rooms[name].controller.progressTotal) * 100;
         Game.rooms[name].visual.text(
