@@ -95,7 +95,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                     c.memory.role == 'longDistanceHarvester' && c.memory.target == roomName)
 
                 if (numberOfLongDistanceHarvesters[roomName] < this.memory.minLongDistanceHarvesters[roomName]) {
-                    name = this.createLongDistanceHarvester(maxEnergy, 2, room.name, roomName, 1);
+                    name = this.createLongDistanceHarvester(maxEnergy, 2, room.name, roomName, 1, "longDistanceHarvester");
                 }
             }
         }
@@ -136,7 +136,7 @@ StructureSpawn.prototype.createCustomCreep =
 
 // create a new function for StructureSpawn
 StructureSpawn.prototype.createLongDistanceHarvester =
-    function (energy, numberOfWorkParts, home, target, sourceIndex) {
+    function (energy, numberOfWorkParts, home, target, sourceIndex, roleName) {
         // create a body with the specified number of WORK parts and one MOVE part per non-MOVE part
         var body = [];
         for (let i = 0; i < numberOfWorkParts; i++) {
@@ -159,7 +159,7 @@ StructureSpawn.prototype.createLongDistanceHarvester =
         // create creep with the created body
         return this.spawnCreep(body, "longDistance" + '_' + Game.time, {
             memory: {
-                role: 'longDistanceHarvester',
+                role: roleName,
                 home: home,
                 target: target,
                 sourceIndex: sourceIndex,
