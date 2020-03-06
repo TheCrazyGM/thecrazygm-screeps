@@ -157,7 +157,7 @@ StructureSpawn.prototype.createLongDistanceHarvester =
         }
 
         // create creep with the created body
-        return this.spawnCreep(body, roleName + '_' + Game.time, {
+        return this.spawnCreep(body, "longDistance" + '_' + Game.time, {
             memory: {
                 role: 'longDistanceHarvester',
                 home: home,
