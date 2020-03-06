@@ -58,10 +58,9 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
             }
         }
         var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-        console.log('Builders: ' + builders.length);
     
         if (builders.length < 2) {
-            var newName = 'Builder' + Game.time;
+            var newName = 'Builder_' + Game.time;
             console.log('Spawning new builder: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
                 { memory: { role: 'builder' } });
