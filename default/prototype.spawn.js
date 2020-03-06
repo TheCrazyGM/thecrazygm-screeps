@@ -104,7 +104,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         if (name != undefined && _.isString(name)) {
             console.log(this.name + " spawned new creep: " + name + " (" + Game.creeps[name].memory.role + ")");
             for (let role of listOfRoles) {
-                console.log(role + ": " + numberOfCreeps[role]);
+                console.log(role , numberOfCreeps[role]);
             }
             for (let roomName in numberOfLongDistanceHarvesters) {
                 console.log("LongDistanceHarvester" + roomName + ": " + numberOfLongDistanceHarvesters[roomName]);
