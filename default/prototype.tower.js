@@ -14,7 +14,7 @@ StructureTower.prototype.defend =
         }
         else {
             if (closestDamagedStructure) {
-                this.repair(closestDamagedStructure);
+                //this.repair(closestDamagedStructure);
             }
         }
     };
