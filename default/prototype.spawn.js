@@ -57,12 +57,12 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
             }
         }
-        if (numberOfCreeps['builder'] < 2 && room.storage.store[RESOURCE_ENERGY] >= 400) {
+        if (numberOfCreeps['builder'] < 2 ) {
             name = this.createCustomCreep(400, 'builder');
             console.log("Need a builder...")
         }
 
-        if (numberOfCreeps['repairer'] == 0 && room.storage.store[RESOURCE_ENERGY] >= 400) {
+        if (numberOfCreeps['repairer'] == 0) {
             name = this.createCustomCreep(400, 'repairer');
             console.log("Need a repairer...")
         }
