@@ -188,7 +188,7 @@ StructureSpawn.prototype.createMiner =
 StructureSpawn.prototype.createTruck =
     function () {
         return this.spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], 'truck_' + Game.time,
-            { memory: { role: 'upgrader' } })
+            { memory: { role: 'upgrader', working: false } })
     }
 // create a new function for StructureSpawn
 StructureSpawn.prototype.createCargo =
