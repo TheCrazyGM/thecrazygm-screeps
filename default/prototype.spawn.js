@@ -95,7 +95,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                     c.memory.role == 'longDistanceHarvester' && c.memory.target == roomName)
 
                 if (numberOfLongDistanceHarvesters[roomName] < this.memory.minLongDistanceHarvesters[roomName]) {
-                    name = this.createLongDistanceHarvester(maxEnergy, 2, room.name, roomName, 0);
+                    name = this.createLongDistanceHarvester(maxEnergy, 2, room.name, roomName, 1);
                 }
             }
         }
