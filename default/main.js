@@ -23,35 +23,6 @@ module.exports.loop = function () {
         });
         console.log(Game.rooms[name].controller.progress, Game.rooms[name].controller.progressTotal, percent);
     }
-    /*
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-    console.log('Harvesters: ' + harvesters.length);
-    
-    if (harvesters.length < 2) {
-        var newName = 'Harvester' + Game.time;
-        console.log('Spawning new harvester: ' + newName);
-        Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
-            { memory: { role: 'harvester' } });
-    }
-        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-        console.log('Builders: ' + builders.length);
-    
-        if (builders.length < 2) {
-            var newName = 'Builder' + Game.time;
-            console.log('Spawning new builder: ' + newName);
-            Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE], newName,
-                { memory: { role: 'builder' } });
-        }
-    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-    console.log('Upgraders: ' + upgraders.length);
-
-    if (upgraders.length < 2) {
-        var newName = 'Upgraders' + Game.time;
-        console.log('Spawning new upgraders: ' + newName);
-        Game.spawns['Spawn1'].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE], newName,
-            { memory: { role: 'upgrader' } });
-    }
-    */
     // find all towers
     var towers = _.filter(Game.structures, s => s.structureType == STRUCTURE_TOWER);
     // for each tower
