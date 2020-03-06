@@ -59,10 +59,12 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         }
         if (numberOfCreeps['builder'] < 2 && room.storage.store[RESOURCE_ENERGY] >= 400) {
             name = this.createCustomCreep(400, 'builder');
+            console.log("Need a builder...")
         }
 
         if (numberOfCreeps['repairer'] == 0 && room.storage.store[RESOURCE_ENERGY] >= 400) {
             name = this.createCustomCreep(400, 'repairer');
+            console.log("Need a repairer...")
         }
         // if none of the above caused a spawn command check for other roles
         if (name == undefined) {
