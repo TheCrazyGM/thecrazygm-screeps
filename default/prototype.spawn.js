@@ -131,7 +131,7 @@ StructureSpawn.prototype.createCustomCreep =
         }
 
         // create creep with the created body and the given role
-        return this.spawnCreep(body, "roleName" + '_' + Game.time, { memory: { role: roleName, working: false } });
+        return this.spawnCreep(body, roleName + '_' + Game.time, { memory: { role: roleName, working: false } });
     };
 
 // create a new function for StructureSpawn
