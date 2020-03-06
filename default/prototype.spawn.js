@@ -27,7 +27,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
             if (numberOfCreeps['miner'] > 0 ||
                 (room.storage != undefined && room.storage.store[RESOURCE_ENERGY] >= 150 + 550)) {
                 // create a lorry
-                name = this.createCargo(150);
+                name = this.createLorry(150);
             }
             // if there is no miner and not enough energy in Storage left
             else {
@@ -73,7 +73,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 // if no claim order was found, check other roles
                 else if (numberOfCreeps[role] < this.memory.minCreeps[role]) {
                     if (role == 'lorry') {
-                        name = this.createCargo(150);
+                        name = this.createLorry(150);
                     }
                     else {
                         name = this.createCustomCreep(maxEnergy, role);
@@ -186,7 +186,7 @@ StructureSpawn.prototype.createTruck =
             { memory: { role: 'upgrader', working: false } })
     }
 // create a new function for StructureSpawn
-StructureSpawn.prototype.createCargo =
+StructureSpawn.prototype.createLorry =
     function (energy) {
         // create a body with twice as many CARRY as MOVE parts
         var numberOfParts = Math.floor(energy / 150);
