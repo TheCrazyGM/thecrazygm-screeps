@@ -76,7 +76,6 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                         name = this.createCargo(150);
                     }
                     else {
-                        console.log("Need a: " + role)
                         name = this.createCustomCreep(maxEnergy, role);
                     }
                     break;
