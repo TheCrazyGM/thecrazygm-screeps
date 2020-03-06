@@ -58,8 +58,6 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
             }
         }
         // if none of the above caused a spawn command check for other roles
-        console.log(this.memory.minCreeps['harvester'])
-        console.log(this.memory.hasOwnProperty(this.memory.minCreeps));
         if (name == undefined) {
             for (let role of listOfRoles) {
                 // check for claim order
@@ -73,8 +71,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                     }
                 }
                 // if no claim order was found, check other roles
-                else if (this.memory.hasOwnProperty(this.memory.minCreeps) && this.memory.hasOwnProperty(this.memory.minCreeps[role])
-                    && numberOfCreeps[role] < this.memory.minCreeps[role]) {
+                else if (numberOfCreeps[role] < this.memory.minCreeps[role]) {
                     if (role == 'cargo') {
                         name = this.createCargo(150);
                     }
