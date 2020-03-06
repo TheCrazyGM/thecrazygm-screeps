@@ -46,7 +46,7 @@ module.exports = {
                 // try to repair it, if not in range
                 if (creep.repair(target) == ERR_NOT_IN_RANGE) {
                     // move towards it
-                    creep.moveTo(target);
+                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
             // if we can't fine one
