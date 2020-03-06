@@ -57,14 +57,14 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
             }
         }
-        var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        console.log('upgraders: ' + upgraders.length);
+        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+        console.log('Builders: ' + builders.length);
     
-        if (upgraders.length < 2) {
-            var newName = 'Upgraders' + Game.time;
-            console.log('Spawning new upgraders: ' + newName);
+        if (builders.length < 2) {
+            var newName = 'Builder' + Game.time;
+            console.log('Spawning new builder: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
-                { memory: { role: 'upgrader' } });
+                { memory: { role: 'builder' } });
         }
         // if none of the above caused a spawn command check for other roles
         if (name == undefined) {
