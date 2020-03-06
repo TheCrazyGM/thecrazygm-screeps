@@ -60,7 +60,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         if (numberOfCreeps['builder'] < 2) {
             name = this.createCustomCreep(400, 'builder');
         }
-        
+
         // if none of the above caused a spawn command check for other roles
         if (name == undefined) {
             for (let role of listOfRoles) {
