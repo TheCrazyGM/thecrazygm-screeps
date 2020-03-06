@@ -22,7 +22,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
 
         // if no harvesters are left AND either no miners or no lorries are left
         //  create a backup creep
-        if (numberOfCreeps['harvester'] < 2 && numberOfCreeps['cargo'] == 0) {
+        if (numberOfCreeps['harvester'] == 0 && numberOfCreeps['cargo'] == 0) {
             // if there are still miners or enough energy in Storage left
             if (numberOfCreeps['miner'] > 0 ||
                 (room.storage != undefined && room.storage.store[RESOURCE_ENERGY] >= 150 + 550)) {
