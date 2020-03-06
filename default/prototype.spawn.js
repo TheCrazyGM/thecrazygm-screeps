@@ -58,7 +58,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
             }
         }
         // if none of the above caused a spawn command check for other roles
-        console.log(this.memory.minCreeps)
+        console.log(this.memory.minCreeps['harvester'])
         console.log(this.memory.hasOwnProperty(this.memory.minCreeps));
         if (name == undefined) {
             for (let role of listOfRoles) {
