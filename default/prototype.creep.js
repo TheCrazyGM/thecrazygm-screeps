@@ -7,7 +7,7 @@ var roles = {
     longDistanceHarvester: require('role.longDistanceHarvester'),
     claimer: require('role.claimer'),
     miner: require('role.miner'),
-    cargo: require('role.cargo')
+    lorry: require('role.lorry')
 };
 
 Creep.prototype.runRole =

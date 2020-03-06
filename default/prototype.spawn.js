@@ -1,4 +1,4 @@
-var listOfRoles = ['harvester', 'cargo', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
+var listOfRoles = ['harvester', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
 
 // create a new function for StructureSpawn
 StructureSpawn.prototype.spawnCreepsIfNecessary =
@@ -22,11 +22,11 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
 
         // if no harvesters are left AND either no miners or no lorries are left
         //  create a backup creep
-        if (numberOfCreeps['harvester'] == 0 && numberOfCreeps['cargo'] == 0) {
+        if (numberOfCreeps['harvester'] == 0 && numberOfCreeps['lorry'] == 0) {
             // if there are still miners or enough energy in Storage left
             if (numberOfCreeps['miner'] > 0 ||
                 (room.storage != undefined && room.storage.store[RESOURCE_ENERGY] >= 150 + 550)) {
-                // create a cargo
+                // create a lorry
                 name = this.createCargo(150);
             }
             // if there is no miner and not enough energy in Storage left
@@ -72,7 +72,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
                 // if no claim order was found, check other roles
                 else if (numberOfCreeps[role] < this.memory.minCreeps[role]) {
-                    if (role == 'cargo') {
+                    if (role == 'lorry') {
                         name = this.createCargo(150);
                     }
                     else {
@@ -200,6 +200,6 @@ StructureSpawn.prototype.createCargo =
             body.push(MOVE);
         }
 
-        // create creep with the created body and the role 'cargo'
-        return this.spawnCreep(body, 'cargo_' + Game.time, { memory: { role: 'cargo', working: false } });
+        // create creep with the created body and the role 'lorry'
+        return this.spawnCreep(body, 'lorry_' + Game.time, { memory: { role: 'lorry', working: false } });
     };
