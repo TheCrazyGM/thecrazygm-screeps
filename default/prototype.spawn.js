@@ -8,7 +8,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         // find all creeps in room
         /** @type {Array.<Creep>} */
         let creepsInRoom = room.find(FIND_MY_CREEPS);
-        
+
         // count the number of creeps alive for each role in this room
         // _.sum will count the number of properties in Game.creeps filtered by the
         //  arrow function, which checks for the creep being a specific role
@@ -57,7 +57,15 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
             }
         }
-
+        var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+        console.log('upgraders: ' + upgraders.length);
+    
+        if (upgraders.length < 2) {
+            var newName = 'Upgraders' + Game.time;
+            console.log('Spawning new upgraders: ' + newName);
+            Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], newName,
+                { memory: { role: 'upgrader' } });
+        }
         // if none of the above caused a spawn command check for other roles
         if (name == undefined) {
             for (let role of listOfRoles) {
@@ -73,7 +81,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
                 // if no claim order was found, check other roles
                 else if (this.memory.hasOwnProperty(this.memory.minCreeps) && this.memory.hasOwnProperty(this.memory.minCreeps[role])
-                         && numberOfCreeps[role] < this.memory.minCreeps[role]) {
+                    && numberOfCreeps[role] < this.memory.minCreeps[role]) {
                     if (role == 'cargo') {
                         name = this.createCargo(150);
                     }
@@ -84,7 +92,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
             }
         }
-        
+
         // if none of the above caused a spawn command check for LongDistanceHarvesters
         /** @type {Object.<string, number>} */
         let numberOfLongDistanceHarvesters = {};
@@ -131,7 +139,7 @@ StructureSpawn.prototype.createCustomCreep =
         }
 
         // create creep with the created body and the given role
-        return this.spawnCreep(body, roleName + '_' + Game.time, { memory: { role: roleName, working: false }});
+        return this.spawnCreep(body, roleName + '_' + Game.time, { memory: { role: roleName, working: false } });
     };
 
 // create a new function for StructureSpawn
@@ -157,19 +165,21 @@ StructureSpawn.prototype.createLongDistanceHarvester =
         }
 
         // create creep with the created body
-        return this.spawnCreep(body, roleName + '_' + Game.time, { memory: {
-            role: 'longDistanceHarvester',
-            home: home,
-            target: target,
-            sourceIndex: sourceIndex,
-            working: false
-        }});
+        return this.spawnCreep(body, roleName + '_' + Game.time, {
+            memory: {
+                role: 'longDistanceHarvester',
+                home: home,
+                target: target,
+                sourceIndex: sourceIndex,
+                working: false
+            }
+        });
     };
 
 // create a new function for StructureSpawn
 StructureSpawn.prototype.createClaimer =
     function (target) {
-        return this.spawnCreep([CLAIM, MOVE], 'claimer_' + Game.time, {memory: { role: 'claimer', target: target }});
+        return this.spawnCreep([CLAIM, MOVE], 'claimer_' + Game.time, { memory: { role: 'claimer', target: target } });
     };
 
 // create a new function for StructureSpawn
@@ -177,9 +187,14 @@ StructureSpawn.prototype.createMiner =
     function (sourceId) {
         //return this.spawnCreep([CLAIM, MOVE], 'claimer_' + Game.time, {memory: { role: 'claimer', target: target }});
         return this.spawnCreep([WORK, WORK, WORK, WORK, WORK, MOVE], 'miner_' + Game.time,
-                                {memory: { role: 'miner', sourceId: sourceId }});
+            { memory: { role: 'miner', sourceId: sourceId } });
     };
 
+StructureSpawn.prototype.createTruck =
+    function () {
+        return this.spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], 'truck_' + Game.time,
+            { memory: { role: 'upgrader' } })
+    }
 // create a new function for StructureSpawn
 StructureSpawn.prototype.createCargo =
     function (energy) {
@@ -196,5 +211,5 @@ StructureSpawn.prototype.createCargo =
         }
 
         // create creep with the created body and the role 'cargo'
-        return this.spawnCreep(body, 'cargo_' + Game.time, {memory: { role: 'cargo', working: false }});
+        return this.spawnCreep(body, 'cargo_' + Game.time, { memory: { role: 'cargo', working: false } });
     };

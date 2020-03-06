@@ -20,7 +20,7 @@ module.exports = {
         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE], newName, { memory: { role: 'builder' } })
     },
     bigUpgrader: function () {
-        var newName = 'BigUpgrader' + Game.time;
+        var newName = 'macTruck' + Game.time;
         Game.spawns['Spawn1'].spawnCreep([WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE], newName, { memory: { role: 'upgrader' } })
     },
     upgrader: function () {
