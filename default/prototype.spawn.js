@@ -205,6 +205,9 @@ function setName(didSpawn) {
         name = "pissing me off";
         console.log("Spawning: " + name)
     }
+    else {
+        console.log("Not enough Energy");
+    }
     return name;
 }
 
