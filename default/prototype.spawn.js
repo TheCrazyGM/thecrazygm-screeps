@@ -7,17 +7,23 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         let room = this.room;
         // find all creeps in room
         /** @type {Array.<Creep>} */
+        let creepsInRoom = room.find(FIND_MY_CREEPS);
+
         let sources = this.room.find(FIND_SOURCES);
         console.log(sources)
-        let containers = room.find(FIND_MY_STRUCTURES)//, { filter: {structureType: STRUCTURE_CONTAINER}});
+        let containers = room.find(FIND_STRUCTURES, {
+            filter: (i) => i.structureType == STRUCTURE_CONTAINER
+        });
         console.log(containers)
 
         for (let source of sources) {
             console.log(source.id)
-            let containers = source.pos.findInRange(FIND_MY_STRUCTURES)//, { filter: {structureType: STRUCTURE_CONTAINER}});
+            //let containers = source.pos.findInRange(FIND_MY_STRUCTURES)//, { filter: {structureType: STRUCTURE_CONTAINER}});
 
         }
-        let creepsInRoom = room.find(FIND_MY_CREEPS);
+
+        
+        
 
         // count the number of creeps alive for each role in this room
         // _.sum will count the number of properties in Game.creeps filtered by the
