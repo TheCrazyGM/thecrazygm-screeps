@@ -10,7 +10,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         let sources = this.room.find(FIND_SOURCES);
         console.log(sources)
         for (let source of sources) {
-        console.log(source)
+        console.log(source.source)
         }
         let creepsInRoom = room.find(FIND_MY_CREEPS);
 
