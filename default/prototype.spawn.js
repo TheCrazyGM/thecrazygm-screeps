@@ -66,7 +66,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                     // try to spawn a claimer
                     name = this.createClaimer(this.memory.claimRoom);
                     // if that worked
-                    if (name != undefined && _.isString(name)) {
+                    if (name != undefined) {
                         // delete the claim order
                         delete this.memory.claimRoom;
                     }
@@ -100,7 +100,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         }
 
         // print name to console if spawning was a success
-        if (name != undefined && _.isString(name)) {
+        if (name != undefined) {
             console.log(this.name + " spawned new creep: " + name + " (" + Game.creeps[name].memory.role + ")");
             for (let role of listOfRoles) {
                 console.log(role + ": " + numberOfCreeps[role]);
