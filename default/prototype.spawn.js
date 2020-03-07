@@ -200,7 +200,6 @@ StructureSpawn.prototype.createLorry =
         return this.spawnCreep(body, 'lorry_' + Game.time, { memory: { role: 'lorry', working: false } });
     };
 function setStatus(didSpawn) {
-    console.log(didSpawn);
     if (didSpawn == 0) {
         status = "pissing me off";
         console.log("Spawning: " + status)
