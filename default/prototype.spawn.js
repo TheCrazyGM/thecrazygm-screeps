@@ -9,7 +9,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         /** @type {Array.<Creep>} */
         let sources = this.room.find(FIND_SOURCES);
         console.log(sources)
-        let containers = room.find(FIND_MY_STRUCTURES, { filter: {structureType: STRUCTURE_CONTAINERS}});
+        let containers = room.find(FIND_MY_STRUCTURES, { filter: {structureType: STRUCTURE_CONTAINER}});
         console.log(containers)
 
         for (let source of sources) {
