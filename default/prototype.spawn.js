@@ -38,7 +38,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         // if no backup creep is required
         else {
             // check if all sources have miners
-            let sources = room.find(FIND_SOURCES);
+            let sources = this.room.find(FIND_SOURCES);
             // iterate over all sources
             for (let source of sources) {
                 // if the source has no miner
