@@ -3,11 +3,6 @@ require('prototype.creep');
 require('prototype.tower');
 require('prototype.spawn');
 
-module.exports = {
-    clearLog: function clearLog(){
-    console.log("<script>angular.element(document.getElementsByClassName('fa fa-trash ng-scope')[0].parentNode).scope().Console.clear()</script>")}
-}
-
 module.exports.loop = function () {
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
