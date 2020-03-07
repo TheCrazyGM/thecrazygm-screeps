@@ -201,7 +201,7 @@ StructureSpawn.prototype.createLorry =
     };
 function setName(didSpawn) {
     if (didSpawn == 0) {
-        name = Game.StructureSpawn.Spawning.name;
+        name = "pissing me off";
         console.log("Spawning: " + name)
     }
     return name;
