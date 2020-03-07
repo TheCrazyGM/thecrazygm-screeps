@@ -202,7 +202,7 @@ StructureSpawn.prototype.createLorry =
 function setStatus(didSpawn) {
     if (didSpawn == 0) {
         status = "pissing me off";
-        console.log("Spawning: " + status)
+        console.log("Spawning")
     }
     else {
         status = undefined
