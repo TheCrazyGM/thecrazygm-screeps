@@ -14,7 +14,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
 
         for (let source of sources) {
             console.log(source.id)
-            let containers = room.pos.find(FIND_MY_STRUCTURES)//, { filter: {structureType: STRUCTURE_CONTAINER}});
+            let containers = source.pos.findInRange(FIND_MY_STRUCTURES)//, { filter: {structureType: STRUCTURE_CONTAINER}});
 
         }
         let creepsInRoom = room.find(FIND_MY_CREEPS);
