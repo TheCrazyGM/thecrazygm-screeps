@@ -1,4 +1,4 @@
-var listOfRoles = ['harvester', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
+var listOfRoles = ['harvester','miner', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
 
 // create a new function for StructureSpawn
 StructureSpawn.prototype.spawnCreepsIfNecessary =
