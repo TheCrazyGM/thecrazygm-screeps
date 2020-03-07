@@ -205,6 +205,9 @@ function setStatus(didSpawn) {
         status = "pissing me off";
         console.log("Spawning: " + status)
     }
+    else {
+        status = didSpawn
+    }
     return status;
 }
 
