@@ -3,6 +3,10 @@ require('prototype.creep');
 require('prototype.tower');
 require('prototype.spawn');
 
+module.exports = function clearLog(){
+    console.log("<script>angular.element(document.getElementsByClassName('fa fa-trash ng-scope')[0].parentNode).scope().Console.clear()</script>")
+}
+
 module.exports.loop = function () {
     for (var name in Memory.creeps) {
         if (!Game.creeps[name]) {
@@ -53,8 +57,5 @@ module.exports.loop = function () {
     for (let spawnName in Game.spawns) {
         // run spawn logic
         Game.spawns[spawnName].spawnCreepsIfNecessary();
-    }
-    function clearLog(){
-        console.log("<script>angular.element(document.getElementsByClassName('fa fa-trash ng-scope')[0].parentNode).scope().Console.clear()</script>")
     }
 }
