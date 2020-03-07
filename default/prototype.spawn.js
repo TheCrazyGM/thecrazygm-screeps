@@ -9,6 +9,9 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         /** @type {Array.<Creep>} */
         let sources = this.room.find(FIND_SOURCES);
         console.log(sources)
+        for (let source of sources) {
+        console.log(source)
+        }
         let creepsInRoom = room.find(FIND_MY_CREEPS);
 
         // count the number of creeps alive for each role in this room
