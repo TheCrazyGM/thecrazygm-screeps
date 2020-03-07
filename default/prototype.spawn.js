@@ -206,7 +206,7 @@ function setStatus(didSpawn) {
         console.log("Spawning: " + status)
     }
     else {
-        status = didSpawn
+        status = undefined
     }
     return status;
 }
