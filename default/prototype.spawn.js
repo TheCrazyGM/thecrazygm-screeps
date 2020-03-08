@@ -4,7 +4,7 @@ var listOfRoles = ['harvester', 'lorry', 'claimer', 'upgrader', 'repairer', 'bui
 StructureSpawn.prototype.initialize =
     function () {
         /** @type {Room} */
-        let room = this.room;
+        let room = this.room
         console.log("Intializing..." + room.name)
         for (let role of listOfRoles) {
             this.memory.minCreeps[role] = "0";
