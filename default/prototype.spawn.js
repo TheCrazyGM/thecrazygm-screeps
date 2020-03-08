@@ -1,16 +1,16 @@
 var listOfRoles = ['harvester', 'miner', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
 
 // to be called manually to set the values for minCreeps and other needed memories or to reset
-StructureSpawn.prototype.initialize = 
-function () {
-    /** @type {Room} */
-    let room = this.room;
-    console.log("Intializing..." + room.name)
-    for (let role of listOfRoles) {
-        this.memory.minCreeps[role] = "0";
+StructureSpawn.prototype.initialize =
+    function () {
+        /** @type {Room} */
+        let room = this.room;
+        console.log("Intializing..." + room.name)
+        for (let role of listOfRoles) {
+            this.memory.minCreeps[role] = "0";
+        }
+        this.memory.minLongDistanceHarvesters[room.name] = "0"
     }
-    this.memory.minLongDistanceHarvesters[room.name] = "0"
-}
 
 // create a new function for StructureSpawn
 StructureSpawn.prototype.spawnCreepsIfNecessary =
@@ -31,7 +31,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
             numberOfCreeps[role] = _.sum(creepsInRoom, (c) => c.memory.role == role);
         }
         let maxEnergy = room.energyCapacityAvailable;
-        let status = undefined;
+        let status = false;
 
         // if no harvesters are left AND either no miners or no lorries are left
         //  create a backup creep
@@ -72,14 +72,14 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         }
 
         // if none of the above caused a spawn command check for other roles
-        if (status == undefined) {
+        if (!status) {
             for (let role of listOfRoles) {
                 // check for claim order
                 if (role == 'claimer' && this.memory.claimRoom != undefined) {
                     // try to spawn a claimer
                     status = setStatus(this.createClaimer(this.memory.claimRoom));
                     // if that worked
-                    if (status != undefined) {
+                    if (status) {
                         // delete the claim order
                         delete this.memory.claimRoom;
                     }
@@ -100,7 +100,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         // if none of the above caused a spawn command check for LongDistanceHarvesters
         /** @type {Object.<string, number>} */
         let numberOfLongDistanceHarvesters = {};
-        if (status == undefined) {
+        if (!status) {
             // count the number of long distance harvesters globally
             for (let roomName in this.memory.minLongDistanceHarvesters) {
                 numberOfLongDistanceHarvesters[roomName] = _.sum(Game.creeps, (c) =>
@@ -113,7 +113,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         }
 
         // print status to console if spawning was a success
-        if (status != undefined) {
+        if (status) {
             console.log(this.name + " spawned new creep: " + status);
             for (let role of listOfRoles) {
                 console.log(role + ": " + numberOfCreeps[role]);
@@ -214,10 +214,10 @@ StructureSpawn.prototype.createLorry =
     };
 function setStatus(didSpawn) {
     if (didSpawn == 0) {
-        status = true;
+        status = true
     }
     else {
-        status = undefined
+        status = false
     }
     return status;
 }
