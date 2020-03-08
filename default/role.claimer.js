@@ -13,6 +13,12 @@ module.exports = {
             if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                 // move towards the controller
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
+                
+            }
+            if(creep.room.controller) {
+                if(creep.signController(creep.room.controller, "Complete noob, please be gental. 😀") == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller);
+                }
             }
         }
     }
