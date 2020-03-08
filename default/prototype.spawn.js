@@ -186,7 +186,7 @@ StructureSpawn.prototype.createLongHaul =
         }
 
         // create creep with the created body
-        return this.spawnCreep(body, "longHaul" + '_' + Game.time, {
+        return this.spawnCreep(body, 's' + '_' + Game.time, {
             memory: {
                 role: 'longHaul',
                 home: home,
