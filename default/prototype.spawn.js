@@ -11,6 +11,19 @@ StructureSpawn.prototype.initialize =
         }
         this.memory.minLongDistanceHarvesters[room.name] = "0"
     }
+    StructureSpawn.prototype.koolaid =
+    function () {
+        /** @type {Room} */
+        let room = this.room;
+
+        // find all creeps in room
+        /** @type {Array.<Creep>} */
+        let creepsInRoom = room.find(FIND_MY_CREEPS);
+        for (let creep of creepsInRoom) {
+            console.log(creep + "Would have just destructed!")
+            //creep.suicide()
+        }
+    }
 
 // create a new function for StructureSpawn
 StructureSpawn.prototype.spawnCreepsIfNecessary =
