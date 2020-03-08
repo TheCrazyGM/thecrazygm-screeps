@@ -133,10 +133,10 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         if (status) {
             console.log(this.name + " spawned new creep: ");
             for (let role of listOfRoles) {
-                console.log(role + ": " + numberOfCreeps[role]);
+                console.log(role, numberOfCreeps[role]);
             }
             for (let roomName in numberOfLongHaul) {
-                console.log("Longhaul" . roomName , ": " + numberOfLongHaul[roomName]);
+                console.log("Longhaul".roomName, numberOfLongHaul[roomName]);
             }
         }
     };
