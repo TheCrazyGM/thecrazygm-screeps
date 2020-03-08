@@ -12,7 +12,7 @@ module.exports = {
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
             // switch state
             creep.memory.working = true;
-            creep.say('🚚 transfer')
+            creep.say('🚚 unload')
         }
 
         // if creep is supposed to transfer energy to a structure
