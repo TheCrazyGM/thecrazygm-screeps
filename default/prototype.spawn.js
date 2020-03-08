@@ -22,8 +22,8 @@ StructureSpawn.prototype.koolaid =
         // find all creeps in room
         /** @type {Array.<Creep>} */
         let creepsInRoom = room.find(FIND_MY_CREEPS);
-        for (let creep of creepsInRoom) {
-            this.creeps[creep].suicide()
+        for (var name of Game.creeps) {
+            name.suicide()
         }
     }
 
