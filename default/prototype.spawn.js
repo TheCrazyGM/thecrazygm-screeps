@@ -229,6 +229,7 @@ StructureSpawn.prototype.createLorry =
         // create creep with the created body and the role 'lorry'
         return this.spawnCreep(body, 'lorry_' + Game.time, { memory: { role: 'lorry', working: false } });
     };
+
 function setStatus(didSpawn) {
     if (didSpawn == 0) {
         status = true
@@ -237,5 +238,5 @@ function setStatus(didSpawn) {
         status = false
     }
     return status;
-}
+};
 
