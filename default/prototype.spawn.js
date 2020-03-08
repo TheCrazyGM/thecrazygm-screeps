@@ -121,7 +121,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 numberOfLongHaul[roomName] = _.sum(Game.creeps, (c) =>
                     c.memory.role == 'longHaul' && c.memory.target == roomName)
 
-                if (numberOfLongHaul[roomName] < this.memory.minLongLongHaul[roomName]) {
+                if (numberOfLongHaul[roomName] < this.memory.minLongHaul[roomName]) {
                     status = setStatus(this.createLongHaul(maxEnergy, 2, room.name, roomName, 1));
                 }
             }
