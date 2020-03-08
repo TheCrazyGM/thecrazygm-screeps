@@ -205,7 +205,7 @@ StructureSpawn.prototype.createClaimer =
 StructureSpawn.prototype.createMiner =
     function (sourceId) {
         //return this.spawnCreep([CLAIM, MOVE], 'claimer_' + Game.time, {memory: { role: 'claimer', target: target }});
-        return this.spawnCreep([WORK, WORK, WORK, WORK, WORK, MOVE], 'miner_' + Game.time,
+        return this.spawnCreep([WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE], 'miner_' + Game.time,
             { memory: { role: 'miner', sourceId: sourceId } });
     };
 
