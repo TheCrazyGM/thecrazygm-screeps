@@ -12,7 +12,8 @@ var roles = {
 
 Creep.prototype.runRole =
     function () {
-        roles[this.memory.role].run(this);
+        if (roles[this.memory.role] != undefined){
+        roles[this.memory.role].run(this);}
     };
 
 /** @function 
