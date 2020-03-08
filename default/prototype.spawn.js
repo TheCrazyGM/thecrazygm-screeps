@@ -5,11 +5,11 @@ StructureSpawn.prototype.initialize =
 function () {
     /** @type {Room} */
     let room = this.room;
-    console.log("Intializing..." + room)
+    console.log("Intializing..." + room.name)
     for (let role of listOfRoles) {
         this.memory.minCreeps[role] = "0";
     }
-    this.memory.minLongDistanceHarvesters = {room: "0"}
+    this.memory.minLongDistanceHarvesters[room.name] = "0"
 }
 
 // create a new function for StructureSpawn
