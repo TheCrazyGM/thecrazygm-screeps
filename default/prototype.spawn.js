@@ -122,7 +122,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                     c.memory.role == 'longHaul' && c.memory.target == roomName)
 
                 if (numberOfLongHaul[roomName] < this.memory.minLongHaul[roomName]) {
-                    status = setStatus(this.createLongHaul(maxEnergy, 2, room.name, roomName, 1));
+                    status = setStatus(this.createLongHaul(maxEnergy, 2, room.name, roomName, 0));
                 }
             }
         }
