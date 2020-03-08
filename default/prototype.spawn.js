@@ -136,7 +136,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 console.log(role + ": " + numberOfCreeps[role]);
             }
             for (let roomName in numberOfLongHaul) {
-                console.log("Longhaul" + roomName + ": " + numberOfLongHaul[roomName]);
+                console.log("Longhaul" . roomName , ": " + numberOfLongHaul[roomName]);
             }
         }
     };
