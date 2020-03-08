@@ -10,8 +10,11 @@ StructureSpawn.prototype.initialize =
             this.memory.minCreeps[role] = "0";
         }
         this.memory.minLongDistanceHarvesters[room.name] = "0"
+        this.memory.claimRoom = undefined
     }
-    StructureSpawn.prototype.koolaid =
+
+// Have all the creeps drink the koolaid
+StructureSpawn.prototype.koolaid =
     function () {
         /** @type {Room} */
         let room = this.room;
@@ -20,8 +23,7 @@ StructureSpawn.prototype.initialize =
         /** @type {Array.<Creep>} */
         let creepsInRoom = room.find(FIND_MY_CREEPS);
         for (let creep of creepsInRoom) {
-            console.log(creep + "Would have just destructed!")
-            //creep.suicide()
+            creep.suicide()
         }
     }
 
