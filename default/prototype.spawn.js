@@ -5,25 +5,10 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
     function () {
         /** @type {Room} */
         let room = this.room;
+
         // find all creeps in room
         /** @type {Array.<Creep>} */
         let creepsInRoom = room.find(FIND_MY_CREEPS);
-
-        let sources = this.room.find(FIND_SOURCES);
-        console.log(sources)
-        let containers = room.find(FIND_STRUCTURES, {
-            filter: (i) => i.structureType == STRUCTURE_CONTAINER
-        });
-        console.log(containers)
-
-        for (let source of sources) {
-            console.log(source.id)
-            //let containers = source.pos.findInRange(FIND_MY_STRUCTURES)//, { filter: {structureType: STRUCTURE_CONTAINER}});
-
-        }
-
-        
-        
 
         // count the number of creeps alive for each role in this room
         // _.sum will count the number of properties in Game.creeps filtered by the
@@ -55,15 +40,14 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
         else {
             // check if all sources have miners
             let sources = this.room.find(FIND_SOURCES);
-            console.log(sources)
             // iterate over all sources
             for (let source of sources) {
                 // if the source has no miner
                 if (!_.some(creepsInRoom, c => c.memory.role == 'miner' && c.memory.sourceId == source.id)) {
                     // check whether or not the source has a container
                     /** @type {Array.StructureContainer} */
-                    let containers = source.pos.findInRange(FIND_STRUCTURES, 1, {
-                        filter: s => s.structureType == STRUCTURE_CONTAINER
+                    let containers = source.pos.findInRange(FIND_STRUCTURES, {
+                        filter: (i) => i.structureType == STRUCTURE_CONTAINER
                     });
                     // if there is a container next to the source
                     if (containers.length > 0) {
@@ -218,8 +202,7 @@ StructureSpawn.prototype.createLorry =
     };
 function setStatus(didSpawn) {
     if (didSpawn == 0) {
-        status = "pissing me off";
-        console.log("Spawning")
+        status = true;
     }
     else {
         status = undefined
