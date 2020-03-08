@@ -9,7 +9,7 @@ StructureSpawn.prototype.initialize =
         for (let role of listOfRoles) {
             this.memory.minCreeps[role] = "0";
         }
-        this.memory.minLongDistanceHarvesters[room.name] = "0"
+        this.memory.minLongHaul[room.name] = "0"
         this.memory.claimRoom = undefined
     }
 
@@ -114,15 +114,15 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
 
         // if none of the above caused a spawn command check for LongDistanceHarvesters
         /** @type {Object.<string, number>} */
-        let numberOfLongDistanceHarvesters = {};
+        let numberOfLongHaul = {};
         if (!status) {
             // count the number of long distance harvesters globally
-            for (let roomName in this.memory.minLongDistanceHarvesters) {
-                numberOfLongDistanceHarvesters[roomName] = _.sum(Game.creeps, (c) =>
-                    c.memory.role == 'longDistanceHarvester' && c.memory.target == roomName)
+            for (let roomName in this.memory.minLongHaul) {
+                numberOfLongHaul[roomName] = _.sum(Game.creeps, (c) =>
+                    c.memory.role == 'longHaul' && c.memory.target == roomName)
 
-                if (numberOfLongDistanceHarvesters[roomName] < this.memory.minLongDistanceHarvesters[roomName]) {
-                    status = setStatus(this.createLongDistanceHarvester(maxEnergy, 2, room.name, roomName, 1));
+                if (numberOfLongHaul[roomName] < this.memory.minLongLongHaul[roomName]) {
+                    status = setStatus(this.createLongHaul(maxEnergy, 2, room.name, roomName, 1));
                 }
             }
         }
@@ -133,8 +133,8 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
             for (let role of listOfRoles) {
                 console.log(role + ": " + numberOfCreeps[role]);
             }
-            for (let roomName in numberOfLongDistanceHarvesters) {
-                console.log("LongDistanceHarvester" + roomName + ": " + numberOfLongDistanceHarvesters[roomName]);
+            for (let roomName in numberOfLongHaul) {
+                console.log("Longhaul" + roomName + ": " + numberOfLongHaul[roomName]);
             }
         }
     };
@@ -162,7 +162,7 @@ StructureSpawn.prototype.createCustomCreep =
     };
 
 // create a new function for StructureSpawn
-StructureSpawn.prototype.createLongDistanceHarvester =
+StructureSpawn.prototype.createLongHaul =
     function (energy, numberOfWorkParts, home, target, sourceIndex) {
         // create a body with the specified number of WORK parts and one MOVE part per non-MOVE part
         var body = [];
@@ -184,9 +184,9 @@ StructureSpawn.prototype.createLongDistanceHarvester =
         }
 
         // create creep with the created body
-        return this.spawnCreep(body, "longDistance" + '_' + Game.time, {
+        return this.spawnCreep(body, "longHaul" + '_' + Game.time, {
             memory: {
-                role: 'longDistanceHarvester',
+                role: 'longHaul',
                 home: home,
                 target: target,
                 sourceIndex: sourceIndex,
