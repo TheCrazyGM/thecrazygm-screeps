@@ -3,7 +3,6 @@ StructureTower.prototype.defend =
     function () {
         // find closes hostile creep
         var target = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        var constructionSite = this.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
         var closestDamagedStructure = this.pos.findClosestByRange(FIND_STRUCTURES, {
             filter: (structure) => structure.hits < structure.hitsMax
         });
@@ -15,8 +14,7 @@ StructureTower.prototype.defend =
         }
         else {
             if (closestDamagedStructure) {
-                //this.repair(closestDamagedStructure);
-                this.build(constructionSite)
+                this.repair(closestDamagedStructure);
             }
         }
     };
