@@ -1,5 +1,17 @@
 var listOfRoles = ['harvester', 'miner', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
 
+// to be called manually to set the values for minCreeps and other needed memories or to reset
+StructureSpawn.prototype.initialize = 
+function () {
+    /** @type {Room} */
+    let room = this.room;
+    console.log("Intializing..." + room)
+    for (let role of listOfRoles) {
+        this.memory.minCreeps[role] = "0";
+    }
+    this.memory.minLongDistanceHarvesters = {room: "0"}
+}
+
 // create a new function for StructureSpawn
 StructureSpawn.prototype.spawnCreepsIfNecessary =
     function () {
