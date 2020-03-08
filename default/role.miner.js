@@ -5,7 +5,7 @@ module.exports = {
         let source = Game.getObjectById(creep.memory.sourceId);
         console.log(source)
         // find container next to source
-        let container = this.room.find(FIND_STRUCTURES, {
+        let container = creep.room.find(FIND_STRUCTURES, {
             filter: s => s.structureType == STRUCTURE_CONTAINER
         })[0];
 
