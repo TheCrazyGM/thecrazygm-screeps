@@ -56,14 +56,16 @@ module.exports = {
             // if in target room
             if (creep.room.name == creep.memory.target) {
                 // find source
+                creep.getEnergy(false, true)
+/*
                 var source = creep.room.find(FIND_SOURCES);//[creep.memory.sourceIndex];
 
                 // try to harvest energy, if the source is not in range
                 if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                     // move towards the source
                     creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
-                }
-            }
+                */                
+               }
             // if not in target room
             else {
                 // find exit to target room
