@@ -58,7 +58,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 if (!_.some(creepsInRoom, c => c.memory.role == 'miner' && c.memory.sourceId == source.id)) {
                     // check whether or not the source has a container
                     /** @type {Array.StructureContainer} */
-                    let containers = source.pos.findInRange(FIND_STRUCTURES, {
+                    let containers = room.find(FIND_STRUCTURES, {
                         filter: (i) => i.structureType == STRUCTURE_CONTAINER
                     });
                     // if there is a container next to the source
