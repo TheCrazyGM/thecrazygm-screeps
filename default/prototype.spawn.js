@@ -11,6 +11,7 @@ StructureSpawn.prototype.initialize =
         }
         this.memory.minLongHaul[room.name] = "0"
         this.memory.claimRoom = undefined
+        return 0
     }
 
 // Have all the creeps drink the koolaid
@@ -25,6 +26,7 @@ StructureSpawn.prototype.koolaid =
         for (var name of creepsInRoom) {
             name.suicide()
         }
+        return 0
     }
 
 // create a new function for StructureSpawn
