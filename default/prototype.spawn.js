@@ -7,9 +7,9 @@ StructureSpawn.prototype.initialize =
         let room = this.room
         console.log("Intializing..." + room.name)
         for (let role of listOfRoles) {
-            this.memory.minCreeps[role] = "0";
+            this.memory.minCreeps[role] = '0';
         }
-        this.memory.minLongHaul[room.name] = "0"
+        this.memory.minLongHaul[room.name] = '0'
         this.memory.claimRoom = undefined
         return 0
     }

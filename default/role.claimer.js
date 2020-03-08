@@ -14,7 +14,7 @@ module.exports = {
                 // move towards the controller
                 creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
             }
-            if (creep.signController(creep.room.controller, "Complete noob, please be gental. 😀") == ERR_NOT_IN_RANGE) {
+            if (creep.signController(creep.room.controller, 'Complete noob, please be gental. 😀') == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller, { visualizePathStyle: { stroke: '#ffffff' } });
             }
         }

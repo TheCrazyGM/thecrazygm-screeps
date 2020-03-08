@@ -14,7 +14,7 @@ module.exports = {
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
             // switch state
             creep.memory.working = true;
-            creep.say("🛠️ fixing")
+            creep.say('🛠️ fixing')
         }
 
         // if creep is supposed to repair something
