@@ -102,7 +102,7 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 // if no claim order was found, check other roles
                 else if (numberOfCreeps[role] < this.memory.minCreeps[role]) {
                     if (role == 'lorry') {
-                        status = setStatus(this.createLorry(150));
+                        status = setStatus(this.createLorry(maxEnergy));
                     }
                     else {
                         status = setStatus(this.createCustomCreep(maxEnergy, role));
