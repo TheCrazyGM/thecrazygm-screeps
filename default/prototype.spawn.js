@@ -129,11 +129,11 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
 
         // print status to console if spawning was a success
         if (status) {
-            console.log(this.name + " spawned new creep: " + status);
+            console.log(this.name + " spawned new creep: " + role);
             for (let role of listOfRoles) {
                 console.log(role + ": " + numberOfCreeps[role]);
             }
-            for (let roomstatus in numberOfLongDistanceHarvesters) {
+            for (let roomName in numberOfLongDistanceHarvesters) {
                 console.log("LongDistanceHarvester" + roomName + ": " + numberOfLongDistanceHarvesters[roomName]);
             }
         }
