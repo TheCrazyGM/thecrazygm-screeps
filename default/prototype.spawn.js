@@ -1,4 +1,4 @@
-var listOfRoles = ['harvester', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
+var listOfRoles = ['harvester', 'lorry','truck', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
 
 // to be called manually to set the values for minCreeps and other needed memories or to reset
 StructureSpawn.prototype.initialize =
