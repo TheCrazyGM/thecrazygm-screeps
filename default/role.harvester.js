@@ -25,9 +25,17 @@ module.exports = {
                 filter: (s) => (s.structureType == STRUCTURE_SPAWN
                     || s.structureType == STRUCTURE_EXTENSION
                     || s.structureType == STRUCTURE_TOWER
-                    && s.energy < s.energyCapacity)
+                    || s.structureType == STRUCTURE_CONTAINER)
+                    && s.energy < s.energyCapacity
+            });
+            // find closest container
+            let container = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: s => s.structureType == STRUCTURE_CONTAINER && s.store[RESOURCE_ENERGY] < s.store.getCapacity()
             });
 
+            if (structure == undefined) {
+                structure = container;
+            }
             if (structure == undefined) {
                 structure = creep.room.storage;
             }
