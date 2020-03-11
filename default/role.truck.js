@@ -19,7 +19,7 @@ module.exports = {
         if (creep.memory.working == true) {
             // find closest spawn, extension or tower which is not full
             container = this.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: s => (s.structureType == STUCTURE_CONTAINER || s.structureType == STRUCTURE_STORAGE) && s.energy < s.energyCapacity
+                filter: s => (s.structureType == STRUCTURE_CONTAINER || s.structureType == STRUCTURE_STORAGE) && s.energy < s.energyCapacity
             });
 
             // if we found one
