@@ -7,8 +7,8 @@ var roles = {
     longHaul: require('role.longHaul'),
     claimer: require('role.claimer'),
     miner: require('role.miner'),
-    lorry: require('role.lorry'),
-    truck: require('role.truck')
+    truck: require('role.truck'),
+    cargo: require('role.cargo')
 };
 
 Creep.prototype.runRole =

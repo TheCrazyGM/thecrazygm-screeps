@@ -1,4 +1,4 @@
-var listOfRoles = ['harvester', 'lorry','truck', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
+var listOfRoles = ['harvester', 'truck','cargo', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
 
 // to be called manually to set the values for minCreeps and other needed memories or to reset
 StructureSpawn.prototype.initialize =
@@ -52,12 +52,12 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
 
         // if no harvesters are left AND either no miners or no lorries are left
         //  create a backup creep
-        if (numberOfCreeps['harvester'] == 0 && numberOfCreeps['lorry'] == 0) {
+        if (numberOfCreeps['harvester'] == 0 && numberOfCreeps['truck'] == 0) {
             // if there are still miners or enough energy in Storage left
             if (numberOfCreeps['miner'] > 0 ||
                 (room.storage != undefined && room.storage.store[RESOURCE_ENERGY] >= 150 + 550)) {
-                // create a lorry
-                status = setStatus(this.createLorry(150));
+                // create a truck
+                status = setStatus(this.createTruck(150));
             }
             // if there is no miner and not enough energy in Storage left
             else {
@@ -103,8 +103,8 @@ StructureSpawn.prototype.spawnCreepsIfNecessary =
                 }
                 // if no claim order was found, check other roles
                 else if (numberOfCreeps[role] < this.memory.minCreeps[role]) {
-                    if (role == 'lorry') {
-                        status = setStatus(this.createLorry(maxEnergy));
+                    if (role == 'truck') {
+                        status = setStatus(this.createTruck(maxEnergy));
                     }
                     else {
                         status = setStatus(this.createCustomCreep(maxEnergy, role));
@@ -212,7 +212,7 @@ StructureSpawn.prototype.createMiner =
     };
 
 // create a new function for StructureSpawn
-StructureSpawn.prototype.createLorry =
+StructureSpawn.prototype.createTruck =
     function (energy) {
         // create a body with twice as many CARRY as MOVE parts
         var numberOfParts = Math.floor(energy / 150);
@@ -226,8 +226,8 @@ StructureSpawn.prototype.createLorry =
             body.push(MOVE);
         }
 
-        // create creep with the created body and the role 'lorry'
-        return this.spawnCreep(body, 'lorry_' + Game.time, { memory: { role: 'lorry', working: false } });
+        // create creep with the created body and the role 'truck'
+        return this.spawnCreep(body, 'truck_' + Game.time, { memory: { role: 'truck', working: false } });
     };
 
 function setStatus(didSpawn) {
