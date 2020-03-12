@@ -1,7 +1,21 @@
 {
-    "ecmaVersion": 6,
-    "libs": [],
-    "loadEagerly": [
-      "ScreepsAutocomplete/**/*.js"
-    ]
+  "ecmaVersion": 8,
+  "libs": [
+    "browser"
+  ],
+  "loadEagerly": [
+    "default/**/*.js"
+  ],
+  "dontLoad": [
+    "node_modules/**",
+    "default/**/*.js"
+  ],
+  "plugins": {
+    "es_modules": {},
+    "node": {},
+    "doc_comment": {
+      "fullDocs": true,
+      "strong": true
+    }
   }
+}
